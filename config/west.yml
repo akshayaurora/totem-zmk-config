@@ -1,19 +1,12 @@
 manifest:
-  defaults:
-    revision: main
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: fork
-      url-base: https://github.com/rleyvasal
   projects:
     - name: zmk
-      remote: fork
-      # Official ZMK + patches/zmk-ble.patch (throttle, idle go-dark, adv boost).
-      # Branch: zmk-optimized-484a054. This SHA is the 2026-08-15 validated week.
-      # Do not move to 5606801c (RPA disconnect / reconcile / recovery reboot)
-      # without a dedicated Mac↔Win + split-link A/B. Bumps: zmk-bump.yml
-      revision: 074df9b70720de69c8f961fc8977bd5716adbf03
+      remote: zmkfirmware
+      # zmkfirmware/zmk main as of 2026-08-21 (reproducible first A/B).
+      revision: 641514a97db345f499dd50b0360e594270f008fe
       import: app/west.yml
   self:
     path: config

@@ -4,8 +4,7 @@ name: Verify ZMK patch symbols
 # our patched throttle / go-dark / boost hooks (wrong fork, unpatched main, etc.).
 
 on:
-  push:
-  pull_request:
+  # Disabled on push: this diagnostic image uses unpatched zmkfirmware/zmk.
   workflow_dispatch:
 
 concurrency:
