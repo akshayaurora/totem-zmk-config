@@ -1,9 +1,7 @@
-# Upstream zmkfirmware/zmk: Studio on left via local totem-studio-rpc (drops extra
-# Totem console CDC so zmk.studio can attach). Passkey in totem.conf.
 include:
   - board: xiao_ble//zmk
     shield: totem_left
-    snippet: totem-studio-rpc
+    snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
   - board: xiao_ble//zmk
     shield: totem_right

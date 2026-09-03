@@ -6,3 +6,6 @@ DEBUGGING-NOTES.md
 
 # Editor backup files
 *~
+
+# Downloaded firmware
+*.uf2

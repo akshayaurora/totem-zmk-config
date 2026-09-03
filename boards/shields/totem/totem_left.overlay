@@ -15,23 +15,3 @@
         , <&xiao_d 8 GPIO_ACTIVE_HIGH>
         ;
 };
-
-/*
- * USB CDC console for the left (central) half -- see CONFIG_TOTEM_USB_CONSOLE.
- *
- * Declared unconditionally. On a Studio build the totem-studio-rpc snippet
- * sets status="disabled" on this node (and on the XIAO board CDC) so only
- * the RPC uart enumerates. #ifdef CONFIG_ZMK_STUDIO in this file does not
- * work: shield overlays are preprocessed without that cmake-args symbol.
- */
-&zephyr_udc0 {
-    totem_console_uart: totem_console_uart {
-        compatible = "zephyr,cdc-acm-uart";
-    };
-};
-
-/ {
-    chosen {
-        zephyr,console = &totem_console_uart;
-    };
-};
