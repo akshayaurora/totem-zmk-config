@@ -20,9 +20,9 @@
 
 #define THROTTLE_MIN CONFIG_TOTEM_ADV_THROTTLE_TIMEOUT_MIN
 
-static const struct bt_le_adv_param totem_adv_conn_param =
-    BT_LE_ADV_PARAM(BT_LE_ADV_OPT_CONN | BT_LE_ADV_OPT_USE_NAME | BT_LE_ADV_OPT_FORCE_NAME_IN_AD,
-                    BT_GAP_ADV_FAST_INT_MIN_2, BT_GAP_ADV_FAST_INT_MAX_2, NULL);
+#define TOTEM_ADV_CONN_PARAM                                                                       \
+    BT_LE_ADV_PARAM(BT_LE_ADV_OPT_CONN | BT_LE_ADV_OPT_USE_NAME | BT_LE_ADV_OPT_FORCE_NAME_IN_AD, \
+                    BT_GAP_ADV_FAST_INT_MIN_2, BT_GAP_ADV_FAST_INT_MAX_2, NULL)
 
 static const struct bt_data totem_adv_data[] = {
     BT_DATA_BYTES(BT_DATA_GAP_APPEARANCE, BT_BYTES_LIST_LE16(CONFIG_BT_DEVICE_APPEARANCE)),
@@ -34,7 +34,7 @@ static const struct bt_data totem_adv_data[] = {
 static bool totem_adv_dark;
 
 static int totem_adv_start_open(void) {
-    int err = bt_le_adv_start(&totem_adv_conn_param, totem_adv_data, ARRAY_SIZE(totem_adv_data),
+    int err = bt_le_adv_start(TOTEM_ADV_CONN_PARAM, totem_adv_data, ARRAY_SIZE(totem_adv_data),
                               NULL, 0);
 
     if (err == -EALREADY) {
